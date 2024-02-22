@@ -1,9 +1,0 @@
-res://scenes/component/hit_flash_component.tscn
-res://scenes/component/hit_flash_component.gdshader
-res://resources/tileset.tres
-res://scenes/main/main.tscn
-res://scenes/game_object/basic_enemy/basic_enemy.tscn
-res://scenes/component/health_component.tscn
-res://scenes/game_object/wizard_enemy/wizard_enemy.tscn
-res://resources/upgrades/sword_damage.tres
-res://resources/upgrades/axe_damage.tres

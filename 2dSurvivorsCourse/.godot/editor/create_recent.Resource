@@ -1,3 +1,0 @@
-Theme
-Resource
-TileSet
