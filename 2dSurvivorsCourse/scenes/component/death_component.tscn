@@ -1,7 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5ib8hymri112"]
+[gd_scene load_steps=15 format=3 uid="uid://c5ib8hymri112"]
 
 [ext_resource type="Script" path="res://scenes/component/death_component.gd" id="1_b0unx"]
 [ext_resource type="Texture2D" uid="uid://cnv7jd36i82rx" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_rj8pr"]
+[ext_resource type="PackedScene" uid="uid://cyqp24a2ujbhm" path="res://scenes/component/random_stream_player_2d_component.tscn" id="3_oo4hm"]
+[ext_resource type="AudioStream" uid="uid://cqqkos8724osx" path="res://assets/audio/footstep_carpet_000.ogg" id="4_6snme"]
+[ext_resource type="AudioStream" uid="uid://cqcaxmsrp7dme" path="res://assets/audio/footstep_carpet_001.ogg" id="5_nyvsv"]
+[ext_resource type="AudioStream" uid="uid://bhxw1oejxmh1q" path="res://assets/audio/footstep_carpet_002.ogg" id="6_jqglq"]
+[ext_resource type="AudioStream" uid="uid://d2heto4o6rh8m" path="res://assets/audio/footstep_carpet_003.ogg" id="7_l42n7"]
+[ext_resource type="AudioStream" uid="uid://bhsgsfitlbl5j" path="res://assets/audio/footstep_carpet_004.ogg" id="8_155us"]
 
 [sub_resource type="Animation" id="Animation_p6apv"]
 length = 0.001
@@ -64,13 +70,11 @@ curve = SubResource("Curve_fiwj2")
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 15.0
-gravity = Vector3(0, 800, 0)
 initial_velocity_min = 175.0
 initial_velocity_max = 250.0
 angular_velocity_min = -1440.0
 angular_velocity_max = 1440.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 800, 0)
 linear_accel_max = 30.0
 scale_curve = SubResource("CurveTexture_eyu5m")
 
@@ -91,3 +95,7 @@ lifetime = 0.5
 one_shot = true
 fixed_fps = 0
 interpolate = false
+
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("3_oo4hm")]
+max_distance = 300.0
+streams = Array[AudioStream]([ExtResource("4_6snme"), ExtResource("5_nyvsv"), ExtResource("6_jqglq"), ExtResource("7_l42n7"), ExtResource("8_155us")])

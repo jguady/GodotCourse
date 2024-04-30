@@ -1,9 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvo653l484lji"]
+[gd_scene load_steps=19 format=3 uid="uid://dvo653l484lji"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_g07y0"]
 [ext_resource type="Texture2D" uid="uid://8j58lcsmthba" path="res://scenes/game_object/player/player.png" id="2_an34r"]
+[ext_resource type="PackedScene" uid="uid://c0um073lhnusk" path="res://scenes/component/velocity_component.tscn" id="2_fgo1j"]
 [ext_resource type="PackedScene" uid="uid://cji4oahsiyfcq" path="res://scenes/component/health_component.tscn" id="2_kmf3t"]
 [ext_resource type="PackedScene" uid="uid://c5inp6v24gqfq" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="3_gbu7t"]
+[ext_resource type="PackedScene" uid="uid://cyqp24a2ujbhm" path="res://scenes/component/random_stream_player_2d_component.tscn" id="5_i6x6d"]
+[ext_resource type="AudioStream" uid="uid://cumpgynpe23rg" path="res://assets/audio/impactMining_000.ogg" id="6_y7mq5"]
+[ext_resource type="AudioStream" uid="uid://csaf4n7fltokl" path="res://assets/audio/impactMining_001.ogg" id="7_7wm0d"]
+[ext_resource type="AudioStream" uid="uid://dy0o84q0yvudw" path="res://assets/audio/impactMining_002.ogg" id="8_a6ftd"]
+[ext_resource type="AudioStream" uid="uid://dn366cjdvqbev" path="res://assets/audio/impactMining_003.ogg" id="9_tlrjs"]
+[ext_resource type="AudioStream" uid="uid://bghtq18327aku" path="res://assets/audio/impactMining_004.ogg" id="10_aqow5"]
 
 [sub_resource type="Animation" id="Animation_54fre"]
 length = 0.001
@@ -91,9 +98,6 @@ _data = {
 "walk": SubResource("Animation_30dtp")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5o4a"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilq1k"]
 bg_color = Color(0.262745, 0.882353, 0.701961, 1)
 border_width_left = 2
@@ -121,12 +125,19 @@ libraries = {
 "": SubResource("AnimationLibrary_gcvvm")
 }
 
+[node name="VelocityComponent" parent="." instance=ExtResource("2_fgo1j")]
+acceleration = 25.0
+max_speed = 90
+
 [node name="HealthComponent" parent="." instance=ExtResource("2_kmf3t")]
 
 [node name="Abilities" type="Node" parent="."]
 
 [node name="SwordAbilityController" parent="Abilities" instance=ExtResource("3_gbu7t")]
 max_range = 150.0
+
+[node name="HitRandomStreamPlayer2DComponent" parent="." instance=ExtResource("5_i6x6d")]
+streams = Array[AudioStream]([ExtResource("6_y7mq5"), ExtResource("7_7wm0d"), ExtResource("8_a6ftd"), ExtResource("9_tlrjs"), ExtResource("10_aqow5")])
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -139,7 +150,6 @@ offset_top = -25.0
 offset_right = 16.0
 offset_bottom = -19.0
 pivot_offset = Vector2(16, 3)
-theme_override_styles/background = SubResource("StyleBoxFlat_p5o4a")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ilq1k")
 max_value = 1.0
 value = 0.5
