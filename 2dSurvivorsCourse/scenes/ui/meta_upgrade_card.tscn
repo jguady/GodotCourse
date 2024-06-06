@@ -209,7 +209,7 @@ size_flags_vertical = 8
 theme_type_variation = &"BlueOutlineLabel"
 text = "50/200"
 
-[node name="Count Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="CountLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10

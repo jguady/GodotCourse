@@ -9,10 +9,18 @@ func _ready():
 	
 	
 func on_death():
-	if randf() > drop_percent:
+	var adjusted_drop_percent = drop_percent
+	var experience_gain_upgrade_count = MetaProgression.get_upgrade_count("experience_gain")
+	if experience_gain_upgrade_count > 0:
+		adjusted_drop_percent += .1
+		
+	
+	if randf() > adjusted_drop_percent:
 		return
+		
 	if vial_scene == null:
 		return
+		
 	if not owner is Node2D:
 		return
 	var spawn_position = (owner as Node2D).global_position
@@ -20,3 +28,5 @@ func on_death():
 	var entites_layer = get_tree().get_first_node_in_group("entities_layer")
 	entites_layer.add_child(vial_instance)
 	vial_instance.global_position = spawn_position
+
+
